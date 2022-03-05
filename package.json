@@ -3,7 +3,7 @@
         "@project-serum/anchor": "^0.19.0",
         "vue": "^3.2.31"
     },
-    "homepage":"https://PierricM.github.io/AceSocial",
+    "homepage":".",
     "devDependencies": {
         "chai": "^4.3.4",
         "mocha": "^9.0.3",
@@ -11,7 +11,6 @@
         "@types/mocha": "^9.0.0",
         "typescript": "^4.3.5"
     },
-    "homepage":"https://PierricM.github.io/AceSocial",
     "scripts": {
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
