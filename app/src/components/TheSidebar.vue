@@ -1,10 +1,22 @@
 <script setup>
 import { WalletMultiButton, useWallet } from 'solana-wallets-vue'
+import { sendDonation } from '@/api'
+
 const { connected } = useWallet()
+
+const donate = async () => {
+    console.log('donating');
+    const donation = await sendDonation()
+    console.log(donation)
+}
 </script>
 
 <template>
     <aside class="flex flex-col items-center md:items-stretch space-y-2 md:space-y-4">
+        <p><i>AceSocial</i></p>
+        <br>
+        <br>
+        <br>
         <router-link :to="{ name: 'Home' }" class="inline-block rounded-full hover:bg-gray-100 p-3 md:self-start">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-10 w-8 md:w-10 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
@@ -52,6 +64,16 @@ const { connected } = useWallet()
         </div>
         <div class="fixed bottom-8 right-8 md:static w-48 md:w-full">
             <wallet-multi-button></wallet-multi-button>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="fixed bottom-8 right-8 md:static w-48 md:w-full">
+            <button class="text-white px-4 py-2 rounded-full font-semibold bg-pink-500"
+            @click="donate">Support AceSocial by making a donation</button>
         </div>
     </aside>
 </template>
