@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": false,
-  "homepage":".",
+  "homepage": ".",
   "scripts": {
     "serve": "vue-cli-service serve",
     "serve:devnet": "vue-cli-service serve --mode devnet",
@@ -21,6 +21,7 @@
     "autoprefixer": "^10.4.2",
     "core-js": "^3.8.3",
     "dayjs": "^1.10.8",
+    "js-encoding-utils": "^0.7.1",
     "postcss": "^8.4.7",
     "solana-wallets-vue": "^0.3.1",
     "stream": "0.0.2",
