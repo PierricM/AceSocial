@@ -1,37 +1,21 @@
 <script setup>
 import { WalletMultiButton, useWallet } from 'solana-wallets-vue'
-import { sendDonation } from '@/api'
-import { ref } from 'vue'
-
 
 const { connected } = useWallet()
-const amount = ref('')
-
-
-const donate = async () => {
-    console.log('donating');
-    const amount_number = parseInt(amount.value*1000000000);
-    const donation = await sendDonation(amount_number);
-    console.log(donation);
-}
-
-
 </script>
 
 <template>
     <aside class="flex flex-col items-center md:items-stretch space-y-2 md:space-y-4">
-        <p><i>AceSocial</i></p>
-        <br>
-        <br>
+        <div class="text-xl hidden md:block text-blue-700"><b>AceSocial</b></div>
         <br>
         <router-link :to="{ name: 'Home' }" class="inline-block rounded-full hover:bg-gray-100 p-3 md:self-start">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-10 w-8 md:w-10 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-10 w-8 md:w-10 text-blue-700" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
                 <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
             </svg>
         </router-link>
         <div class="flex flex-col items-center md:items-stretch space-y-2">
-            <router-link :to="{ name: 'Home' }" class="rounded-full hover:bg-gray-100 p-3 md:w-full inline-flex items-center space-x-4" active-class="font-bold" v-slot="{ isActive }">
+            <router-link :to="{ name: 'Home' }" class="rounded-full hover:bg-gray-100 p-3 md:w-full inline-flex items-center space-x-4" active-class="font-bold text-blue-700" v-slot="{ isActive }">
                 <svg v-if="isActive" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                 </svg>
@@ -40,7 +24,7 @@ const donate = async () => {
                 </svg>
                 <div class="text-xl hidden md:block">Home</div>
             </router-link>
-            <router-link :to="{ name: 'Topics' }" class="rounded-full hover:bg-gray-100 p-3 md:w-full inline-flex items-center space-x-4" active-class="font-bold" v-slot="{ isActive }">
+            <router-link :to="{ name: 'Topics' }" class="rounded-full hover:bg-gray-100 p-3 md:w-full inline-flex items-center space-x-4" active-class="font-bold text-blue-700" v-slot="{ isActive }">
                 <svg v-if="isActive" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
                     <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
@@ -50,7 +34,7 @@ const donate = async () => {
                 </svg>
                 <div class="text-xl hidden md:block">Topics</div>
             </router-link>
-            <router-link :to="{ name: 'Users' }" class="rounded-full hover:bg-gray-100 p-3 md:w-full inline-flex items-center space-x-4" active-class="font-bold" v-slot="{ isActive }">
+            <router-link :to="{ name: 'Users' }" class="rounded-full hover:bg-gray-100 p-3 md:w-full inline-flex items-center space-x-4" active-class="font-bold text-blue-700" v-slot="{ isActive }">
                 <svg v-if="isActive" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                 </svg>
@@ -59,7 +43,7 @@ const donate = async () => {
                 </svg>
                 <div class="text-xl hidden md:block">Users</div>
             </router-link>
-            <router-link v-if="connected" :to="{ name: 'Profile' }" class="rounded-full hover:bg-gray-100 p-3 md:w-full inline-flex items-center space-x-4" active-class="font-bold" v-slot="{ isActive }">
+            <router-link v-if="connected" :to="{ name: 'Profile' }" class="rounded-full hover:bg-gray-100 p-3 md:w-full inline-flex items-center space-x-4" active-class="font-bold text-blue-700" v-slot="{ isActive }">
                 <svg v-if="isActive" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                 </svg>
@@ -75,31 +59,5 @@ const donate = async () => {
         <br>
         <br>
         <br>
-         <div class="flex flex-wrap items-center justify-between -m-2">
-
-            <!-- Topic field. -->
-            <div class="relative m-2 mr-4">
-                <input
-                    type="number"
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode == 46 || event.charCode == 0 "
-                    maxlength = "6"
-                    placeholder="amount in SOL"
-                    class="text-pink-500 rounded-full pl-10 pr-4 py-2 bg-gray-100"
-                    :value="effectiveTopic"
-                    :disabled="forcedTopic"
-                    @input="amount = $event.target.value"
-                >
-                <div class="absolute left-0 inset-y-0 flex pl-3 pr-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 m-auto" :class="effectiveTopic ? 'text-pink-500' : 'text-gray-400'" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M9.243 3.03a1 1 0 01.727 1.213L9.53 6h2.94l.56-2.243a1 1 0 111.94.486L14.53 6H17a1 1 0 110 2h-2.97l-1 4H15a1 1 0 110 2h-2.47l-.56 2.242a1 1 0 11-1.94-.485L10.47 14H7.53l-.56 2.242a1 1 0 11-1.94-.485L5.47 14H3a1 1 0 110-2h2.97l1-4H5a1 1 0 110-2h2.47l.56-2.243a1 1 0 011.213-.727zM9.03 8l-1 4h2.938l1-4H9.031z" clip-rule="evenodd" />
-                    </svg>
-                </div>
-            </div>
-            <div class="flex items-center space-x-6 m-2 ml-auto">
-                <button class="text-white px-4 py-2 rounded-full font-semibold bg-pink-500"
-            @click="donate">Support AceSocial by making a donation</button>
-            </div>
-        </div>
     </aside>
 </template>

@@ -1,6 +1,7 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import TheSidebar from './components/TheSidebar'
+import TheDonationBox from './components/TheDonationBox'
 import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets'
 import { initWallet } from 'solana-wallets-vue'
 import { initWorkspace } from '@/composables'
@@ -21,7 +22,8 @@ initWorkspace()
 
         <!-- Sidebar. -->
         <the-sidebar class="py-4 md:py-8 md:pl-4 md:pr-8 fixed w-20 md:w-64"></the-sidebar>
-
+        <the-donation-box class="absolute bottom-5 left-5"></the-donation-box>
+        <a target="_blank" href="https://trade.dexlab.space/#/market/5rc3qjJTh8y5ZsES3eMyTDpxtzk1ncvS6rrfp7Vg3w1x" class="absolute top-5 right-5 text-white px-4 py-2 rounded-full font-semibold bg-blue-700">Buy $ACE</a>
         <!-- Main -->
         <main class="flex-1 border-r border-l ml-20 md:ml-64 min-h-screen">
             <header class="flex space-x-6 items-center justify-between px-8 py-4 border-b">

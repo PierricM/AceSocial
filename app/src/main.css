@@ -11,7 +11,7 @@
 }
 
 .smv-button-trigger {
-    @apply bg-pink-500 justify-center !important;
+    @apply bg-blue-700 justify-center !important;
 }
 
 .smv-dropdown-list {
