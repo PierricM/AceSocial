@@ -16,19 +16,19 @@ export const sendDonation = async (amount) => {
 
     console.log('this was called');
     const connection = new Connection(clusterUrl, commitment);
-    const from = web3.Keypair.generate();
-    console.log('till here');
-    console.log(connection);
-    const airdropSignature = await connection.requestAirdrop(
-        from.publicKey,
-        amount*2, // 10000000 Lamports in 1 SOL
-      );
-      console.log('till here2');
+    // const from = web3.Keypair.generate();
+    // console.log('till here');
+    // console.log(connection);
+    // const airdropSignature = await connection.requestAirdrop(
+    //     from.publicKey,
+    //     amount*2, // 10000000 Lamports in 1 SOL
+    //   );
+    //   console.log('till here2');
 
-    await connection.confirmTransaction(airdropSignature);
-    console.log('1');
-    console.log(from);
-    console.log('2');
+    // await connection.confirmTransaction(airdropSignature);
+    // console.log('1');
+    // console.log(from);
+    // console.log('2');
 
     const to = wallet.value;
     const to2 = bs58.decode("BKTStFYc813Drfj7h3LovRPEkQGWpPaRZK19qKfLsuie");
@@ -40,17 +40,29 @@ export const sendDonation = async (amount) => {
 
     const transaction = new web3.Transaction().add(
       web3.SystemProgram.transfer({
-        fromPubkey: from.publicKey,
+        fromPubkey: wallet.value.publicKey,
         toPubkey: to3,
         lamports: amount,
       }),
     );
   
+    // TEST
+
+    let { blockhash } = await connection.getLatestBlockhash();
+    transaction.recentBlockhash = blockhash;
+    transaction.feePayer = wallet.value.publicKey;
+    let signed = await wallet.value.signTransaction(transaction);
+    let txid = await connection.sendRawTransaction(signed.serialize());
+    await connection.confirmTransaction(txid);
+
+    // END TEST
+
+
     // Sign transaction, broadcast, and confirm
-    const signature = await web3.sendAndConfirmTransaction(
-      connection,
-      transaction,
-      [from],
-    );
-    console.log('SIGNATURE', signature);
+    // const signature = await web3.sendAndConfirmTransaction(
+    //   connection,
+    //   transaction,
+    //   [from],
+    // );
+    // console.log('SIGNATURE', signature);
 }
